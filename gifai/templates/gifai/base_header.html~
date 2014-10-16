@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<style>
+div {background-color: #ccffcc;}
+</style>
+<html>
+	<head>
+		<title>your average gif watching web</title>
+	</head>
+
+	<body>
+	<div>
+		<h1>
+		{% url 'gifai:index' %}
+		</h1>
+	</div>
+
+	{% block content %}
+	{% endblock %}
+	</body>
+</html>

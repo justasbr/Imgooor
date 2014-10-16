@@ -1,0 +1,12 @@
+{% extends '/gifai/base_header.html' %}
+{% block content %}
+{% if gif_list %}
+	<ul>
+	{%for gif in gif_list %}
+	 <li><a href="/gifai/{{gif.id}}">{{gif.title}}</a></li>	
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No gifs available.</p>
+{% endif %}
+{% endblock content %}

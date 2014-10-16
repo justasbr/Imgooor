@@ -1,0 +1,15 @@
+{% block content %}
+<h2>{{gif.title}}</h2>
+
+<img src="{{gif.source}}" height="200" width="200" />
+
+<br>
+<br>
+Votecount: {{gif.score}}
+
+<form action="{% url 'gifai:vote' gif.id %}" method="post">
+{% csrf_token %}
+<button type="submit" value="Vote">Vote for this gif</button>
+
+</form>
+{% endblock content %}
