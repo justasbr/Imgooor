@@ -1,6 +1,8 @@
 <style>
 
-p.error {color:red}
+    p.error {
+        color: red
+    }
 
 </style>
 
@@ -8,8 +10,9 @@ p.error {color:red}
     {% csrf_token %}
     {{form}}
     <button class="submitbutton" name="submit" value="submit">Submit</button>
-	{% if error %}
-		<br>
-		<p class="error">{{error}}</p>
-	{% endif %}
+    {% if error %}
+    <br>
+
+    <p class="error">{{error}}</p>
+    {% endif %}
 </form>

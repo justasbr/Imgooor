@@ -1,41 +1,42 @@
 {% extends 'gifai/base_header.html' %}
 {% block content %}
 {% if gif_list %}
-	{% if sort == 'new' %}
-		<a href="{% url 'gifai:index_by_score' %}">Sort by rating</a>
-	{% elif sort == 'top' %}
-		<a href="{% url 'gifai:index' %}">Sort by date</a>
-	{% endif %}
+{% if sort == 'new' %}
+<a href="{% url 'gifai:index_by_score' %}">Sort by rating</a>
+{% elif sort == 'top' %}
+<a href="{% url 'gifai:index' %}">Sort by date</a>
+{% endif %}
 
-	<a href="{% url 'gifai:submit' %}">Submit a new pic</a>
-	<ol>
-	{%for gif in gif_list %}
-	  <li>
-		<div class="gifbox">
-		<div class="upperhalf">
-		<p class="titlebox"> 
-			<a href="/gifai/{{gif.id}}">
-				{{gif.title}}
-			</a>
-		</p>
-		<p class="scorebox">
-			{% if sort == 'new' %}
-				{{ gif.pub_date|date:"Y M d H:i" }}
-			{% elif sort = 'top' %}
-				{{gif.score}} vote{{gif.score|pluralize}}
-			{% endif %}
-		</p>
-		</div>
-		<div>
-		<a href="/gifai/{{gif.id}}">
-			<img src="{{gif.source}}" title="{{gif.title}}" height="100" width="100" class="miniimg" />
-		</a>
-		</div>
-		</div> 
-	</li>		
-	{% endfor %}
-	</ol>
+<a href="{% url 'gifai:submit' %}">Submit a new pic</a>
+<ol>
+    {%for gif in gif_list %}
+    <li>
+        <div class="gifbox">
+            <div class="upperhalf">
+                <p class="titlebox">
+                    <a href="/gifai/{{gif.id}}">
+                        {{gif.title}}
+                    </a>
+                </p>
+
+                <p class="scorebox">
+                    {% if sort == 'new' %}
+                    {{ gif.pub_date|date:"Y M d H:i" }}
+                    {% elif sort = 'top' %}
+                    {{gif.score}} vote{{gif.score|pluralize}}
+                    {% endif %}
+                </p>
+            </div>
+            <div>
+                <a href="/gifai/{{gif.id}}">
+                    <img src="{{gif.source}}" title="{{gif.title}}" height="100" width="100" class="miniimg"/>
+                </a>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ol>
 {% else %}
-	<p>No gifs available.</p>
+<p>No gifs available.</p>
 {% endif %}
 {% endblock content %}

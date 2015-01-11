@@ -4,7 +4,7 @@
 <h2>{{gif.title}}</h2>
 
 <a href="{{gif.source}}">
-<img src="{{gif.source}}" height="200" width="200" /></a>
+    <img src="{{gif.source}}" height="200" width="200"/></a>
 
 <br>
 Submitted: {{ gif.pub_date|date:"Y M d H:i" }}
@@ -12,9 +12,9 @@ Submitted: {{ gif.pub_date|date:"Y M d H:i" }}
 Votecount: {{gif.score}}
 
 <form action="{% url 'gifai:vote' gif.id %}" method="post">
-{% csrf_token %}
-<button type="submit" name="vote" value="upvote"> Upvote </button>
-<button type="submit" name="vote" value="downvote"> Downvote </button>
+    {% csrf_token %}
+    <button type="submit" name="vote" value="upvote"> Upvote</button>
+    <button type="submit" name="vote" value="downvote"> Downvote</button>
 
 </form>
 {% endblock content %}

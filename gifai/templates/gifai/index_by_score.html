@@ -1,31 +1,32 @@
 {% extends 'gifai/base_header.html' %}
 {% block content %}
 {% if gif_list %}
-	<a href="{% url 'gifai:index' %}">Sort by date</a>
-	<ol>
-	{%for gif in gif_list %}
-	 <li>
-		<div class="gifbox">
-		<div class="upperhalf">
-		<p class="titlebox"> 
-			<a href="/gifai/{{gif.id}}">
-				{{gif.title}}
-			</a>
-		</p>
-		<p class="scorebox">
-			{{gif.score}} vote{{gif.score|pluralize}}
-		</p>
-		</div>
-		<div>
-		<a href="/gifai/{{gif.id}}">
-			<img src="{{gif.source}}" title="{{gif.title}}" height="100" width="100" class="miniimg" />
-		</a>
-		</div>
-		</div> 
-	</li>	
-	{% endfor %}
-	</ol>
+<a href="{% url 'gifai:index' %}">Sort by date</a>
+<ol>
+    {%for gif in gif_list %}
+    <li>
+        <div class="gifbox">
+            <div class="upperhalf">
+                <p class="titlebox">
+                    <a href="/gifai/{{gif.id}}">
+                        {{gif.title}}
+                    </a>
+                </p>
+
+                <p class="scorebox">
+                    {{gif.score}} vote{{gif.score|pluralize}}
+                </p>
+            </div>
+            <div>
+                <a href="/gifai/{{gif.id}}">
+                    <img src="{{gif.source}}" title="{{gif.title}}" height="100" width="100" class="miniimg"/>
+                </a>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ol>
 {% else %}
-	<p>No gifs available.</p>
+<p>No gifs available.</p>
 {% endif %}
 {% endblock content %}
