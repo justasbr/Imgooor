@@ -1,0 +1,18 @@
+<style>
+
+    p.error {
+        color: red
+    }
+
+</style>
+
+<form action="{% url 'gifai:submit' %}" method="post">
+    {% csrf_token %}
+    {{form}}
+    <button class="submitbutton" name="submit" value="submit">Submit</button>
+    {% if error %}
+    <br>
+
+    <p class="error">{{error}}</p>
+    {% endif %}
+</form>
