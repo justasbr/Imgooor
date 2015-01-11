@@ -1,15 +1,20 @@
+{% extends 'gifai/base_header.html' %}
+
 {% block content %}
 <h2>{{gif.title}}</h2>
 
-<img src="{{gif.source}}" height="200" width="200" />
+<a href="{{gif.source}}">
+<img src="{{gif.source}}" height="200" width="200" /></a>
 
 <br>
+Submitted: {{ gif.pub_date|date:"Y M d H:i" }}
 <br>
 Votecount: {{gif.score}}
 
 <form action="{% url 'gifai:vote' gif.id %}" method="post">
 {% csrf_token %}
-<button type="submit" value="Vote">Vote for this gif</button>
+<button type="submit" name="vote" value="upvote">Upvote</button>
+<button type="submit" name="vote" value="downvote">Downvote</button>
 
 </form>
 {% endblock content %}

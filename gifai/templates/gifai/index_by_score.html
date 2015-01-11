@@ -1,16 +1,10 @@
 {% extends 'gifai/base_header.html' %}
 {% block content %}
 {% if gif_list %}
-	{% if sort == 'new' %}
-		<a href="{% url 'gifai:index_by_score' %}">Sort by rating</a>
-	{% elif sort == 'top' %}
-		<a href="{% url 'gifai:index' %}">Sort by date</a>
-	{% endif %}
-
-	<a href="{% url 'gifai:submit' %}">Submit a new pic</a>
+	<a href="{% url 'gifai:index' %}">Sort by date</a>
 	<ol>
 	{%for gif in gif_list %}
-	  <li>
+	 <li>
 		<div class="gifbox">
 		<div class="upperhalf">
 		<p class="titlebox"> 
@@ -19,11 +13,7 @@
 			</a>
 		</p>
 		<p class="scorebox">
-			{% if sort == 'new' %}
-				{{ gif.pub_date|date:"Y M d H:i" }}
-			{% elif sort = 'top' %}
-				{{gif.score}} vote{{gif.score|pluralize}}
-			{% endif %}
+			{{gif.score}} vote{{gif.score|pluralize}}
 		</p>
 		</div>
 		<div>
@@ -32,7 +22,7 @@
 		</a>
 		</div>
 		</div> 
-	</li>		
+	</li>	
 	{% endfor %}
 	</ol>
 {% else %}
